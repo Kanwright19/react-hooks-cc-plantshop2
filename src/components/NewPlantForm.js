@@ -11,6 +11,7 @@ function NewPlantForm({onFormSubmit}) {
   }
 
   const [formData, setFormData] = useState(initialPlants)
+  const [plants , setPlants] = useState([])
 
   function handlePlantChange(e) {
     const key = e.target.name
@@ -19,19 +20,28 @@ function NewPlantForm({onFormSubmit}) {
     setFormData ({...formData ,[key] : value }) 
   }
 
-  function handlePlantSubmit(e){
-    e.preventDefault()
-
-    fetch (`http://localhost:6001/plants`) ,{
-      method : 'POST' , 
-      headers : { 
-        "Content-Type" : "Application/JSON"
+  function onPlantFormSubmit (formData){
+    let newPlants = [...plants , formData]
+    setPlants(newPlants)
+   }
+   
+   function handlePlantSubmit(e) {
+    e.preventDefault();
+  
+    fetch(`http://localhost:6001/plants`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
       },
-      body : JSON.stringify(formData)
-    }
-    .then ((resp ) => resp.json())
-    .then ((showNewPlant) => { onPlantFormSubmit(showNewPlant) , setFormData(initialPlants)}
-  )}
+      body: JSON.stringify(formData)
+    })
+      .then((resp) => resp.json())
+      .then((showNewPlant) => {
+        onPlantFormSubmit(showNewPlant);
+        setFormData(initialPlants);
+      });
+  }
+
   return (
     <div className="new-plant-form">
       <h2>New Plant</h2>

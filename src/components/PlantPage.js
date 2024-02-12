@@ -23,12 +23,13 @@ function PlantPage() {
   setSearch(e.target.value)
  }
 
- const filterSearch = plants.filer((plant) => {
+ const filterSearch = plants.filter((plant) => {
   const lowerCaseName = plant.name.toLowerCase()
-  const findName = search.name.toLocaleLowerCase()
+  const findName = search.toLowerCase()
+  
   if (search === "")
     return true 
-  if (lowerCaseName === findName ){
+  if (lowerCaseName !== findName ){
     return plant
   }
  })
