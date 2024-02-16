@@ -41,6 +41,36 @@
       "name": "Fiddle Leaf Fig",
       "image": "./images/fiddle-leaf-fig.jpg",
       "price": 55
+    },
+    {
+      "name": " kairi ",
+      "image": "test ",
+      "price": "0.1",
+      "id": 8
+    },
+    {
+      "name": " kairi ",
+      "image": "test ",
+      "price": "0.1",
+      "id": 9
+    },
+    {
+      "name": " luis",
+      "image": " test",
+      "price": "0.2",
+      "id": 10
+    },
+    {
+      "name": " luis",
+      "image": " test",
+      "price": "0.2",
+      "id": 11
+    },
+    {
+      "name": " ben ",
+      "image": " test",
+      "price": "0.3",
+      "id": 12
     }
   ]
 }

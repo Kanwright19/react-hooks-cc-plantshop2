@@ -1,17 +1,17 @@
 import { useState } from "react";
 import React from "react";
 
-function NewPlantForm({onFormSubmit}) {
+function NewPlantForm({onPlantFormSubmit}) {
   
   const initialPlants =
   {
-    name :  ("") ,
-    image : ("") ,
-    price : ("")
+    name :  (" ") ,
+    image : (" ") ,
+    price : (" ")
   }
 
   const [formData, setFormData] = useState(initialPlants)
-  const [plants , setPlants] = useState([])
+ 
 
   function handlePlantChange(e) {
     const key = e.target.name
@@ -20,25 +20,21 @@ function NewPlantForm({onFormSubmit}) {
     setFormData ({...formData ,[key] : value }) 
   }
 
-  function onPlantFormSubmit (formData){
-    let newPlants = [...plants , formData]
-    setPlants(newPlants)
-   }
-   
    function handlePlantSubmit(e) {
     e.preventDefault();
   
     fetch(`http://localhost:6001/plants`, {
       method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "Application/JSON"
       },
       body: JSON.stringify(formData)
     })
       .then((resp) => resp.json())
       .then((showNewPlant) => {
+        console.log(showNewPlant)
         onPlantFormSubmit(showNewPlant);
-        setFormData(initialPlants);
+        // setFormData(...plants , initialPlants);
       });
   }
 

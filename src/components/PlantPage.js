@@ -29,7 +29,7 @@ function PlantPage() {
   
   if (search === "")
     return true 
-  if (lowerCaseName !== findName ){
+  if (lowerCaseName.includes(findName) ){
     return plant
   }
  })
